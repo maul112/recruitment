@@ -11,6 +11,9 @@ class DashboardController extends Controller
     public function index()
     {
         $user = auth()->user(); // ambil user login
+        if (!$user) {
+            return redirect('/');
+        }
         $lamarans = Lamaran::where('pelamar_id', $user->pelamar->id ?? 0)
                             ->orderBy('created_at', 'desc')
                             ->get();

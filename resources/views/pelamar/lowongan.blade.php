@@ -17,7 +17,7 @@
                             {{ $lowongan->status }}
                         </span>
                     </div>
-        
+
                     <!-- Konten Card 2 Kolom -->
                     <div class="lowongan-content">
                         <!-- Kolom Kiri: Deskripsi -->
