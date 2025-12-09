@@ -3,26 +3,31 @@
 @section('title','Kontrak')
 
 @section('content')
-<h3>Daftar Kontrak</h3>
-<a href="{{ route('admin.kontrak.create') }}">Tambah Kontrak</a>
-<table border="1" cellpadding="8" cellspacing="0">
-    <tr>
-        <th>ID</th>
-        <th>Pelamar</th>
-        <th>Posisi</th>
-        <th>Status</th>
-        <th>Aksi</th>
-    </tr>
-    @foreach($kontrak as $k)
-    <tr>
-        <td>{{ $k->id }}</td>
-        <td>{{ $k->lamaran->pelamar->nama }}</td>
-        <td>{{ $k->lamaran->posisi }}</td>
-        <td>{{ $k->status }}</td>
-        <td>
-            <a href="{{ route('admin.kontrak.show', $k->id) }}">Detail</a>
-        </td>
-    </tr>
-    @endforeach
-</table>
+<div class="w-full">
+    <div class="flex justify-between mb-2">
+        <h3 class="text-2xl mb-2">Daftar Kontrak</h3>
+        <a class="py-2 px-4 rounded-lg bg-blue-600 text-white transition-all duration-300 hover:shadow-2xl" href="{{ route('admin.kontrak.create') }}">+ Tambah Kontrak</a>
+    </div>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+            <th>ID</th>
+            <th>Pelamar</th>
+            <th>Posisi</th>
+            <th>Status</th>
+            <th>Aksi</th>
+        </tr>
+        @foreach($kontrak as $k)
+        <tr>
+            <td>{{ $k->id }}</td>
+            <td>{{ $k->lamaran->pelamar->nama }}</td>
+            <td>{{ $k->lamaran->posisi }}</td>
+            <td>{{ $k->status }}</td>
+            <td>
+                <a href="{{ route('admin.kontrak.show', $k->id) }}">Detail</a>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+
+</div>
 @endsection
