@@ -78,7 +78,7 @@
                         @endif
                     </td>
                     <td class="actions" style="padding:12px; display:flex; gap:8px; flex-wrap:wrap;">
-                        <a class="btn" href="{{ url('admin/pelamars/'.$p->id) }}">Detail</a>
+                        <a class="btn" href="{{ route("admin.pelamar.show", $p->id) }}">Detail</a>
                         <form action="{{ url('admin/pelamars/'.$p->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Hapus pelamar ini?')">
                             @csrf
                             @method('DELETE')

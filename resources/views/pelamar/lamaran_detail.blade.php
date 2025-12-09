@@ -27,7 +27,7 @@
         </div>
 
         <!-- Profil Pelamar -->
-        <div class="section">
+        <div class="section mt-4">
             <h4>Profil Pelamar</h4>
             <p><strong>Nama Lengkap:</strong> {{ $lamaran->pelamar->nama_lengkap }}</p>
             <p><strong>NIK:</strong> {{ $lamaran->pelamar->nik }}</p>
@@ -78,6 +78,8 @@
             <p>{{ $lamaran->catatan_admin }}</p>
         </div>
         @endif
+
+        <a class="block w-full text-center border border-black rounded-2xl py-2 transition-all duration-300 hover:shadow-2xl" href="{{ route('pelamar.riwayat') }}">Kembali</a>
     </div>
 </div>
 

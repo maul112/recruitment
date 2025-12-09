@@ -17,7 +17,7 @@
                 <i class="fas fa-user"></i>
             </div>
             <div class="menu-content">
-                <a href="#">Profil Saya</a>
+                <a href="{{ route('pelamar.profile') }}">Profil Saya</a>
                 <span>Kelola data diri & dokumen</span>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <i class="fas fa-briefcase"></i>
             </div>
             <div class="menu-content">
-                <a href="#">Lowongan Tersedia</a>
+                <a href="{{ url('/pelamar/lowongan') }}">Lowongan Tersedia</a>
                 <span>Lihat dan daftar pekerjaan</span>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <i class="fas fa-file-alt"></i>
             </div>
             <div class="menu-content">
-                <a href="#">Lamaran Saya</a>
+                <a href="{{ url('/pelamar/riwayat') }}">Lamaran Saya</a>
                 <span>Tracking status lamaran</span>
             </div>
         </div>

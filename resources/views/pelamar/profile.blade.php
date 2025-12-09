@@ -83,9 +83,12 @@
                 <input type="file" name="sertifikat_path">
             </div>
         </div>
-
-        <button type="submit" class="btn-submit">Simpan Profil</button>
+        <div class="flex gap-4">
+            <a class="block w-full text-center border border-black rounded-2xl py-2 hover:scale-105 transition-all duration-300 hover:shadow-2xl" href="{{ route('pelamar.dashboard') }}">Kembali</a>
+            <button type="submit" class="btn-submit w-full py-2">Simpan Profil</button>
+        </div>
     </form>
+
 </div>
 
 <style>
@@ -136,8 +139,6 @@ input:focus, select:focus, textarea:focus {
 
 /* Button */
 .btn-submit {
-    width:100%;
-    padding:12px 0;
     background: linear-gradient(135deg,#2563eb,#1e3a8a);
     border:none;
     border-radius:15px;

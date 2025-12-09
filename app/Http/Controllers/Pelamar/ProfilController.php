@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Pelamar;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pelamar;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
@@ -38,9 +37,10 @@ class ProfilController extends Controller
     
         // Ambil pelamar existing atau buat baru
         $pelamar = Pelamar::firstOrNew(['user_id' => $user->id]);
-    
+        
         // Set data
         $pelamar->nama_lengkap = $user->name; // otomatis dari user
+        $user->name = $request->nama_lengkap;
         $pelamar->nik = $request->nik;
         $pelamar->tanggal_lahir = $request->tanggal_lahir;
         $pelamar->jenis_kelamin = $request->jenis_kelamin;
@@ -61,6 +61,7 @@ class ProfilController extends Controller
         }
     
         $pelamar->save(); // ✅ Insert atau update
+        $user->save();
     
         return redirect()->route('pelamar.profile')->with('success','Profil berhasil diperbarui!');
     }

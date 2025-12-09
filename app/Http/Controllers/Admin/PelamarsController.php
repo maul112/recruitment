@@ -47,7 +47,7 @@ class PelamarsController extends Controller
         $pelamar->status_verifikasi = $request->status;
         $pelamar->save();
 
-        return redirect()->back()->with('success', 'Status verifikasi berhasil diperbarui');
+        return redirect()->route('admin.pelamar.index')->with('success', 'Status verifikasi berhasil diperbarui');
     }
 
     // Hapus pelamar

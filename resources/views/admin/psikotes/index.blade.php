@@ -4,9 +4,9 @@
 
 @section('content')
 <div style="width:100%;">
-    <div>
-        <h3>Daftar Psikotes Pelamar</h3>
-        <a href="{{ route('admin.psikotes.create') }}">Buat Psikotes Baru</a>
+    <div class="flex justify-between mb-4">
+        <h3 class="text-2xl">Daftar Psikotes Pelamar</h3>
+        <a class="py-2 px-4 rounded-lg bg-blue-600 text-white transition-all duration-300 hover:shadow-2xl" href="{{ route('admin.psikotes.create') }}">+ Buat Psikotes Baru</a>
     </div>
     <div>
         <table border="1" cellpadding="8" cellspacing="0">

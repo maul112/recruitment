@@ -8,37 +8,39 @@
 
     <div class="lowongan-grid">
         @forelse($lowongans as $lowongan)
-        <div class="lowongan-card">
-            <!-- Bagian Atas: Posisi dan Status -->
-            <div class="lowongan-header">
-                <h4>{{ $lowongan->posisi }}</h4>
-                <span class="status {{ $lowongan->status == 'published' ? 'status-published' : 'status-closed' }}">
-                    {{ $lowongan->status }}
-                </span>
-            </div>
-
-            <!-- Konten Card 2 Kolom -->
-            <div class="lowongan-content">
-                <!-- Kolom Kiri: Deskripsi -->
-                <div class="lowongan-left">
-                    <p class="deskripsi">{{ $lowongan->deskripsi }}</p>
+            @if ($lowongan->status != 'draft')
+                <div class="lowongan-card">
+                    <!-- Bagian Atas: Posisi dan Status -->
+                    <div class="lowongan-header">
+                        <h4>{{ $lowongan->posisi }}</h4>
+                        <span class="status {{ $lowongan->status == 'published' ? 'status-published' : 'status-closed' }}">
+                            {{ $lowongan->status }}
+                        </span>
+                    </div>
+        
+                    <!-- Konten Card 2 Kolom -->
+                    <div class="lowongan-content">
+                        <!-- Kolom Kiri: Deskripsi -->
+                        <div class="lowongan-left w-50 wrap-break-word">
+                            <p class="deskripsi">{{ $lowongan->deskripsi }}</p>
+                        </div>
+        
+                        <!-- Kolom Kanan: Detail dengan Animasi -->
+                        <div class="lowongan-right">
+                            <ul class="lowongan-detail">
+                                <li style="--i:0"><i class="fas fa-graduation-cap"></i> <strong>Kualifikasi Pendidikan:</strong> {{ $lowongan->kualifikasi_pendidikan }}</li>
+                                <li style="--i:1"><i class="fas fa-calendar-check"></i> <strong>Tanggal Buka:</strong> {{ \Carbon\Carbon::parse($lowongan->tanggal_buka)->format('d M Y') }}</li>
+                                <li style="--i:2"><i class="fas fa-calendar-times"></i> <strong>Tanggal Tutup:</strong> {{ \Carbon\Carbon::parse($lowongan->tanggal_tutup)->format('d M Y') }}</li>
+                                <li style="--i:3"><i class="fas fa-file-alt"></i> <strong>Dokumen Wajib:</strong> {{ $lowongan->dokumen_wajib }}</li>
+                                <li style="--i:4"><i class="fas fa-users"></i> <strong>Kuota:</strong> {{ $lowongan->kuota }}</li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <!-- Tombol Lamar Floating -->
+                    <a href="{{ route('pelamar.lowongan.show', $lowongan->id) }}" class="btn-lamar-float">Lihat & Lamar</a>
                 </div>
-
-                <!-- Kolom Kanan: Detail dengan Animasi -->
-                <div class="lowongan-right">
-                    <ul class="lowongan-detail">
-                        <li style="--i:0"><i class="fas fa-graduation-cap"></i> <strong>Kualifikasi Pendidikan:</strong> {{ $lowongan->kualifikasi_pendidikan }}</li>
-                        <li style="--i:1"><i class="fas fa-calendar-check"></i> <strong>Tanggal Buka:</strong> {{ \Carbon\Carbon::parse($lowongan->tanggal_buka)->format('d M Y') }}</li>
-                        <li style="--i:2"><i class="fas fa-calendar-times"></i> <strong>Tanggal Tutup:</strong> {{ \Carbon\Carbon::parse($lowongan->tanggal_tutup)->format('d M Y') }}</li>
-                        <li style="--i:3"><i class="fas fa-file-alt"></i> <strong>Dokumen Wajib:</strong> {{ $lowongan->dokumen_wajib }}</li>
-                        <li style="--i:4"><i class="fas fa-users"></i> <strong>Kuota:</strong> {{ $lowongan->kuota }}</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Tombol Lamar Floating -->
-            <a href="{{ route('pelamar.lowongan.show', $lowongan->id) }}" class="btn-lamar-float">Lihat & Lamar</a>
-        </div>
+            @endif
         @empty
         <p>Belum ada lowongan tersedia saat ini.</p>
         @endforelse

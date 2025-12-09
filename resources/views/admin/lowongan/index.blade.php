@@ -119,7 +119,7 @@
 
                         <form method="POST" action="{{ url('/admin/lowongan/delete/'.$l->id) }}" onsubmit="return confirm('Hapus lowongan ini?')">
                             @csrf
-                            <button type="submit" class="btn btn-danger">Hapus</button>
+                            <button type="submit" class="btn">Hapus</button>
                         </form>
                     </td>
                 </tr>

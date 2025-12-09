@@ -43,8 +43,8 @@ Route::post('/admin/lowongan/store', [LowonganController::class, 'store']);
 Route::get('/admin/lowongan/edit/{id}', [LowonganController::class, 'edit']);
 Route::post('/admin/lowongan/update/{id}', [LowonganController::class, 'update']);
 Route::post('/admin/lowongan/delete/{id}', [LowonganController::class, 'destroy']);
-Route::get('/admin/pelamar', [PelamarsController::class, 'index']);
-Route::get('/admin/pelamar/{id}', [PelamarsController::class, 'show']);
+Route::get('/admin/pelamar', [PelamarsController::class, 'index'])->name('admin.pelamar.index');
+Route::get('/admin/pelamar/{id}', [PelamarsController::class, 'show'])->name("admin.pelamar.show");
 Route::post('/admin/pelamar/{id}/status', [PelamarsController::class, 'updateStatus']);
 Route::delete('/admin/pelamar/{id}', [PelamarsController::class, 'destroy']);
 Route::get('/admin/lamaran', [LamaranController::class, 'index'])->name('admin.lamaran.index');
@@ -67,7 +67,7 @@ Route::get('/admin/kontrak/{id}', [KontrakController::class,'show'])->name('admi
 Route::post('/admin/kontrak/{id}/update', [KontrakController::class,'update'])->name('admin.kontrak.update');
 
 /* ============ PELAMAR ============ */
-Route::get('/pelamar/dashboard', [PelamarDashboard::class, 'index']);
+Route::get('/pelamar/dashboard', [PelamarDashboard::class, 'index'])->name('pelamar.dashboard');
 Route::get('/pelamar/profile', [ProfilController::class, 'index'])->name('pelamar.profile');
 Route::post('/pelamar/profile', [ProfilController::class, 'update'])->name('pelamar.profile.update');
 Route::get('/pelamar/lowongan', [PelamarLowongan::class, 'index']);
