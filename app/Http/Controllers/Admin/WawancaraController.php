@@ -19,7 +19,7 @@ class WawancaraController extends Controller
     // Form buat wawancara baru
     public function create()
     {
-        $lamaran = Lamaran::where('status', 'lolos_psikotes')->get();
+        $lamaran = Lamaran::where('status', 'psikotes')->get();
         return view('admin.wawancara.create', compact('lamaran'));
     }
 

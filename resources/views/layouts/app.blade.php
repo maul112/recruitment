@@ -145,11 +145,11 @@
         }
 
         /* GRID MENU */
-        .menu-grid {
+        /* .menu-grid {
             display:grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
-        }
+        } */
 
         /* CARD */
         .menu-card {
@@ -205,9 +205,9 @@
                 padding:15px 20px;
             }
 
-            .welcome-card h1{
+            /* .welcome-card h1{
                 font-size:22px;
-            }
+            } */
         }
 
     </style>

@@ -64,23 +64,23 @@
             </div>
             <div class="form-group">
                 <label>CV (PDF)</label>
-                <input type="file" name="cv_path">
+                <input type="file" name="cv_path" accept="application/pdf">
             </div>
             <div class="form-group">
                 <label>Ijazah (PDF)</label>
-                <input type="file" name="ijazah_path">
+                <input type="file" name="ijazah_path" accept="application/pdf">
             </div>
             <div class="form-group">
                 <label>Transkrip Nilai (PDF)</label>
-                <input type="file" name="transkrip_path">
+                <input type="file" name="transkrip_path" accept="application/pdf">
             </div>
             <div class="form-group">
                 <label>Pas Foto (JPG/PNG)</label>
-                <input type="file" name="pas_foto_path">
+                <input type="file" name="pas_foto_path" accept="image/*">
             </div>
             <div class="form-group">
                 <label>Sertifikat (PDF)</label>
-                <input type="file" name="sertifikat_path">
+                <input type="file" name="sertifikat_path" accept="application/pdf">
             </div>
         </div>
         <div class="flex gap-4">

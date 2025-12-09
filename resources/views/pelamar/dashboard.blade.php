@@ -10,8 +10,7 @@
         <p>Selamat datang di sistem rekrutmen sekolah. Silakan kelola akun dan lamaran Anda di bawah ini.</p>
     </div>
 
-    <div class="menu-grid">
-
+    <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         <div class="menu-card">
             <div class="menu-icon">
                 <i class="fas fa-user"></i>
@@ -21,7 +20,7 @@
                 <span>Kelola data diri & dokumen</span>
             </div>
         </div>
-
+        
         <div class="menu-card">
             <div class="menu-icon">
                 <i class="fas fa-briefcase"></i>
@@ -41,7 +40,7 @@
                 <span>Tracking status lamaran</span>
             </div>
         </div>
-
+        
         <div class="menu-card">
             <div class="menu-icon">
                 <i class="fas fa-brain"></i>
@@ -51,7 +50,7 @@
                 <span>Kerjakan tes seleksi online</span>
             </div>
         </div>
-
+        
         <div class="menu-card">
             <div class="menu-icon">
                 <i class="fas fa-award"></i>
@@ -61,8 +60,6 @@
                 <span>Lihat kelulusan tahap akhir</span>
             </div>
         </div>
-
     </div>
-
 </div>
 @endsection

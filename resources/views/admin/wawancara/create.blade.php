@@ -12,7 +12,7 @@
         <label>Lamaran Pelamar:</label>
         <select name="lamaran_id" required>
             @foreach($lamaran as $l)
-            <option value="{{ $l->id }}">{{ $l->pelamar->nama }} - {{ $l->posisi }}</option>
+            <option value="{{ $l->id }}">{{ $l->pelamar->nama_lengkap }} - {{ $l->lowongan->posisi }}</option>
             @endforeach
         </select>
         <br>
