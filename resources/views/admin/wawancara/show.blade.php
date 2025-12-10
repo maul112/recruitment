@@ -23,7 +23,7 @@
         <h4 class="mb-4">Penilaian Wawancara (Skala 10-100)</h4>
         @foreach($aspek as $a)
             <label>{{ $a }}:</label>
-            <input class="border rounded-md mb-4 ml-2 p-2" type="number" name="nilai_{{ $a }}" min="10" max="100" value="{{ $wawancara->nilai ?? '' }}" required>
+            <input class="border rounded-md mb-4 ml-2 p-2" type="number" name="nilai_{{ $a }}" min="10" max="100" value="{{ $wawancara['nilai_' . $a] ?? '' }}" required>
             <br>
         @endforeach
     

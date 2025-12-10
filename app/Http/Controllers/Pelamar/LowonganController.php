@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Lowongan;
 use App\Models\Lamaran;
+use App\Models\Wawancara;
 use Illuminate\Support\Facades\Auth;
 
 class LowonganController extends Controller
@@ -76,8 +77,11 @@ class LowonganController extends Controller
         }
 
         // Ambil semua lamaran beserta lowongan terkait
-        $lamarans = $pelamar->lamarans()->with('lowongan')->orderBy('created_at','desc')->get();
-
+        $lamarans = $pelamar->lamarans()
+        ->with('lowongan', 'wawancara')
+        ->orderBy('created_at','desc')
+        ->get();
+        // dd($lamarans);
         return view('pelamar.riwayat_lamaran', compact('lamarans'));
     }
 
@@ -93,4 +97,23 @@ class LowonganController extends Controller
         return view('pelamar.lamaran_detail', compact('lamaran'));
     }
 
+    public function pengumuman()
+    {
+        $pelamar = auth()->user()->pelamar;
+
+        if (!$pelamar) {
+            return redirect()->route('pelamar.profile')
+                ->with('error','Lengkapi profil terlebih dahulu untuk melihat riwayat lamaran.');
+        }
+
+        // Ambil semua lamaran beserta lowongan terkait
+        $status = ['ditolak_adm', 'lulus', 'ditolak_akhir'];
+        $lamarans = $pelamar->lamarans()
+        ->where('status', $status)
+        ->with('lowongan', 'wawancara')
+        ->orderBy('created_at','desc')
+        ->get();
+
+        return view('pelamar.pengumuman', compact('lamarans'));
+    }
 }

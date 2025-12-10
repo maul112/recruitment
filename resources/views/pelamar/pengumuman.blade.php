@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="content-wrapper">
-    <h2>Riwayat Lamaran</h2>
+    <h2>Pengumuman Lamaran</h2>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -29,8 +29,8 @@
         </form>
     </div>
 
-    @if($lamarans->isEmpty())
-        <p class="empty-msg">Belum ada riwayat lamaran.</p>
+    @if(!$lamarans)
+        <p class="empty-msg">Belum ada pengumuman lamaran.</p>
     @else
         <div class="lamaran-grid">
             @foreach($lamarans as $lamaran)
@@ -41,15 +41,12 @@
                 </div>
                 <div class="lamaran-info">
                     <div>
-                        {{-- <i class="fas fa-building"></i>
-                        <span>{{ $lamaran->lowongan->perusahaan ?? '-' }}</span> --}}
+                        {{-- <i class="fas fa-building"></i> --}}
+                        {{-- <span>{{ $lamaran->lowongan->perusahaan ?? '-' }}</span> --}}
                     </div>
                     <div class="info-item">
                         <i class="fas fa-calendar-alt"></i>
-                        <span>
-                            {{-- {{ $lamaran->wawancara ? $lamaran->wawancara->jadwal->format('d M Y') : '-' }} --}}
-                            {{ $lamaran->wawancara?->jadwal?->format('d M Y') ?? '-' }}
-                        </span>
+                        <span>{{ $lamaran->wawancara ? $lamaran->wawancara->jadwal->format('d M Y') : '-' }}</span>
                     </div>
                 </div>
                 <div class="lamaran-footer">

@@ -24,6 +24,11 @@ class Wawancara extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'jadwal' => 'datetime',
+        // Tambahkan casting untuk created_at, updated_at jika ada
+    ];
+
     // Hubungan dengan Lamaran
     public function lamaran()
     {

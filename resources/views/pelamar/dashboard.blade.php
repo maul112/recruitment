@@ -56,7 +56,7 @@
                 <i class="fas fa-award"></i>
             </div>
             <div class="menu-content">
-                <a href="#">Hasil Seleksi</a>
+                <a href="{{ route('pelamar.pengumuman') }}">Hasil Seleksi</a>
                 <span>Lihat kelulusan tahap akhir</span>
             </div>
         </div>

@@ -10,11 +10,11 @@
     </div>
     <table border="1" cellpadding="8" cellspacing="0">
         <tr>
-            <th>ID</th>
-            <th>Pelamar</th>
-            <th>Posisi</th>
-            <th>Status</th>
-            <th>Aksi</th>
+            <th style="padding: 12px;">ID</th>
+            <th style="padding: 12px;">Pelamar</th>
+            <th style="padding: 12px;">Posisi</th>
+            <th style="padding: 12px;">Status</th>
+            <th style="padding: 12px;">Aksi</th>
         </tr>
         @foreach($kontrak as $k)
         <tr>

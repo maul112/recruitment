@@ -71,7 +71,8 @@ Route::get('/pelamar/dashboard', [PelamarDashboard::class, 'index'])->name('pela
 Route::get('/pelamar/profile', [ProfilController::class, 'index'])->name('pelamar.profile');
 Route::post('/pelamar/profile', [ProfilController::class, 'update'])->name('pelamar.profile.update');
 Route::get('/pelamar/lowongan', [PelamarLowongan::class, 'index']);
-Route::get('/pelamar/lowongan{id}', [PelamarLowongan::class, 'show'])->name('pelamar.lowongan.show');
+Route::get('/pelamar/lowongan/{id}', [PelamarLowongan::class, 'show'])->name('pelamar.lowongan.show');
 Route::post('/pelamar/lowongan/{id}/apply', [PelamarLowongan::class, 'apply'])->name('pelamar.lowongan.apply');
 Route::get('/pelamar/riwayat', [PelamarLowongan::class, 'riwayat'])->name('pelamar.riwayat');
 Route::get('/pelamar/lamaran/{id}', [PelamarLowongan::class, 'detail'])->name('pelamar.lamaran.detail');
+Route::get('pelamar/pengumuman', [PelamarLowongan::class, 'pengumuman'])->name('pelamar.pengumuman');

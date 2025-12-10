@@ -53,10 +53,10 @@ class ProfilController extends Controller
         $files = ['cv_path','ijazah_path','transkrip_path','pas_foto_path','sertifikat_path'];
         foreach ($files as $file) {
             if ($request->hasFile($file)) {
-                if ($pelamar->$file && Storage::exists($pelamar->$file)) {
-                    Storage::delete($pelamar->$file);
+                if ($pelamar->$file && Storage::disk('public')->exists($pelamar->$file)) {
+                    Storage::disk('public')->delete($pelamar->$file);
                 }
-                $pelamar->$file = $request->file($file)->store('pelamars');
+                $pelamar->$file = $request->file($file)->store('pelamars', 'public');
             }
         }
     
