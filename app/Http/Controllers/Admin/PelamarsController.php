@@ -14,7 +14,7 @@ class PelamarsController extends Controller
         $q = $request->query('q');
         $status = $request->query('status');
     
-        $query = Pelamar::with('user'); // include relasi user jika perlu
+        $query = Pelamar::with('user')->has('lamarans'); // include relasi user jika perlu
     
         if ($q) {
             $query->where(function($sub) use ($q) {
@@ -33,12 +33,12 @@ class PelamarsController extends Controller
     
         return view('admin.pelamar.index', compact('pelamars','q','status'));
     }
-    
 
     // Tampilkan detail pelamar
     public function show($id) {
-        $pelamar = Pelamar::with('user')->findOrFail($id);
-        return view('admin.pelamar.show', compact('pelamar'));
+        $pelamar = Pelamar::with('user', 'lamarans.lowongan')->findOrFail($id);
+        $lowonganPertama = $pelamar->lamarans->first()->lowongan ?? null;
+        return view('admin.pelamar.show', compact('pelamar', 'lowonganPertama'));
     }
 
     // Ubah status verifikasi

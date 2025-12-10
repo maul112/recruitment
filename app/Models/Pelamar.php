@@ -36,4 +36,16 @@ class Pelamar extends Model
     {
         return $this->hasMany(Lamaran::class);
     }
+
+    public function lowongans()
+    {
+        return $this->hasManyThrough(
+            Lowongan::class, // Model yang ingin dicapai (Lowongan)
+            Lamaran::class,  // Model perantara (Lamaran)
+            'pelamar_id',    // Foreign key di tabel lamarans yang merujuk ke pelamars
+            'id',            // Primary key di tabel Lowongan
+            'id',            // Primary key di tabel Pelamar
+            'lowongan_id'    // Foreign key di tabel Lamaran yang merujuk ke Lowongan
+        );
+    }
 }

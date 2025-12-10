@@ -15,7 +15,7 @@
             <option value="ditolak_adm" {{ $lamaran->status=='ditolak_adm' ? 'selected':'' }}>Ditolak Admin</option>
             <option value="psikotes" {{ $lamaran->status=='psikotes' ? 'selected':'' }}>Psikotes</option>
             <option value="wawancara" {{ $lamaran->status=='wawancara' ? 'selected':'' }}>Wawancara</option>
-            <option value="diterima" {{ $lamaran->status=='diterima' ? 'selected':'' }}>Diterima</option>
+            <option value="lulus" {{ $lamaran->status=='lulus' ? 'selected':'' }}>Diterima</option>
         </select>
 
         <label class="block my-2">Catatan Admin:</label>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div style="width:100%;">
-    <h3 class="text-2xl">Detail Pelamar: <span class="font-bold">{{ $pelamar->nama_lengkap }}</span></h3>
+    <h3 class="text-2xl">Detail Pelamar: <span class="font-bold">{{ $pelamar->nama_lengkap }} - {{ $lowonganPertama->posisi }}</span></h3>
 
     <div class="my-2">
         <label class="block">Nama Lengkap:</label>

@@ -28,6 +28,11 @@ class Lamaran extends Model
 
     public function lowongan()
     {
-        return $this->belongsTo(Lowongan::class);
+        return $this->belongsTo(Lowongan::class, 'lowongan_id');
+    }
+
+    public function wawancara()
+    {
+        return $this->hasOne(Wawancara::class, 'lamaran_id'); 
     }
 }
