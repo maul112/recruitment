@@ -46,7 +46,7 @@
                 <i class="fas fa-brain"></i>
             </div>
             <div class="menu-content">
-                <a href="#">Psikotes Online</a>
+                <a href="{{ route('pelamar.psikotes') }}">Psikotes Online</a>
                 <span>Kerjakan tes seleksi online</span>
             </div>
         </div>

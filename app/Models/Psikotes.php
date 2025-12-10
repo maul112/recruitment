@@ -24,4 +24,9 @@ class Psikotes extends Model
     {
         return $this->hasMany(JawabanPsikotes::class);
     }
+
+    public function soal()
+    {
+        return $this->belongsToMany(SoalPsikotes::class, 'jawaban_psikotes', 'psikotes_id', 'soal_id');
+    }
 }

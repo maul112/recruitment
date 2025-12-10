@@ -14,8 +14,9 @@ class PsikotesController extends Controller
     // List semua psikotes
     public function index()
     {
-        $psikotes = Psikotes::with('lamaran.pelamar')->get();
-        return view('admin.psikotes.index', compact('psikotes'));
+        $psikotes = Psikotes::with('lamaran.pelamar')->paginate(5);
+        $soal = SoalPsikotes::paginate(5);
+        return view('admin.psikotes.index', compact('psikotes', 'soal'));
     }
 
     // Buat psikotes baru untuk lamaran tertentu
@@ -27,16 +28,44 @@ class PsikotesController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi input
         $request->validate([
-            'lamaran_id' => 'required|exists:lamarans,id',
-            'mulai_at' => 'nullable|date',
-            'selesai_at' => 'nullable|date',
+            'tipe'          => 'required|in:kepribadian,logika,numerik,verbal,analitis',
+            'durasi'        => 'required|integer|min:1',
+            'pertanyaan'    => 'required',
+            'pilihan_a'     => 'nullable|string',
+            'bobot_a'       => 'required|integer',
+            'pilihan_b'     => 'nullable|string',
+            'bobot_b'       => 'required|integer',
+            'pilihan_c'     => 'nullable|string',
+            'bobot_c'       => 'required|integer',
+            'pilihan_d'     => 'nullable|string',
+            'bobot_d'       => 'required|integer',
+            'kunci_jawaban' => 'nullable|in:A,B,C,D',
+            'bobot'         => 'nullable|integer',
         ]);
 
-        Psikotes::create($request->all());
+        // Simpan ke table soal_psikotes
+        SoalPsikotes::create([
+            'tipe'          => $request->tipe,
+            'durasi'        => $request->durasi,
+            'pertanyaan'    => $request->pertanyaan,
+            'pilihan_a'     => $request->pilihan_a,
+            'bobot_a'       => $request->bobot_a,
+            'pilihan_b'     => $request->pilihan_b,
+            'bobot_b'       => $request->bobot_b,
+            'pilihan_c'     => $request->pilihan_c,
+            'bobot_c'       => $request->bobot_c,
+            'pilihan_d'     => $request->pilihan_d,
+            'bobot_d'       => $request->bobot_d,
+            'kunci_jawaban' => $request->kunci_jawaban,
+            'bobot'         => $request->bobot ?? 1,
+        ]);
 
-        return redirect()->route('admin.psikotes.index')->with('success', 'Psikotes berhasil dibuat.');
+        return redirect()->route('admin.psikotes.index')
+            ->with('success', 'Soal psikotes berhasil ditambahkan.');
     }
+
 
     // Tampilkan detail psikotes beserta jawaban pelamar
     public function show($id)
@@ -78,5 +107,59 @@ class PsikotesController extends Controller
         $psikotes->save();
 
         return redirect()->route('admin.psikotes.show', $psikotes->id)->with('success', 'Psikotes dinilai.');
+    }
+
+    public function editSoal($id)
+    {
+        $soal = SoalPsikotes::findOrFail($id);
+        return view('admin.psikotes.edit', compact('soal'));
+    }
+
+    public function updateSoal(Request $request, $id)
+    {
+        $request->validate([
+            'tipe'          => 'required|in:kepribadian,logika,numerik,verbal,analitis',
+            'durasi'        => 'required|integer|min:1',
+            'pertanyaan'    => 'required',
+            'pilihan_a'     => 'nullable|string',
+            'bobot_a'       => 'required|integer',
+            'pilihan_b'     => 'nullable|string',
+            'bobot_b'       => 'required|integer',
+            'pilihan_c'     => 'nullable|string',
+            'bobot_c'       => 'required|integer',
+            'pilihan_d'     => 'nullable|string',
+            'bobot_d'       => 'required|integer',
+            'kunci_jawaban' => 'nullable|in:A,B,C,D',
+            'bobot'         => 'nullable|integer',
+        ]);
+        $soal = SoalPsikotes::findOrFail($id);
+
+        $soal->update([
+            'tipe'          => $request->tipe,
+            'durasi'          => $request->durasi,
+            'pertanyaan'    => $request->pertanyaan,
+            'pilihan_a'     => $request->pilihan_a,
+            'bobot_a'       => $request->bobot_a,
+            'pilihan_b'     => $request->pilihan_b,
+            'bobot_b'       => $request->bobot_b,
+            'pilihan_c'     => $request->pilihan_c,
+            'bobot_c'       => $request->bobot_c,
+            'pilihan_d'     => $request->pilihan_d,
+            'bobot_d'       => $request->bobot_d,
+            'kunci_jawaban' => $request->kunci_jawaban,
+            'bobot'         => $request->bobot ?? 1,
+        ]);
+
+        return redirect()->route('admin.psikotes.index')
+            ->with('success', 'Soal psikotes berhasil diperbarui.');
+    }
+
+    public function deleteSoal($id)
+    {
+        $soal = SoalPsikotes::findOrFail($id);
+        $soal->delete();
+
+        return redirect()->route('admin.psikotes.index')
+            ->with('success', 'Soal psikotes berhasil dihapus.');
     }
 }

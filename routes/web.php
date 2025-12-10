@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\WawancaraController;
 use App\Http\Controllers\Admin\KontrakController;
 use App\Http\Controllers\Pelamar\ProfilController;
 use App\Http\Controllers\Pelamar\LowonganController as PelamarLowongan;
+use App\Http\Controllers\Pelamar\PsikotesPelamarController;
+
 // pelamar
 
 
@@ -65,9 +67,26 @@ Route::get('/admin/kontrak/create', [KontrakController::class,'create'])->name('
 Route::post('/admin/kontrak/store', [KontrakController::class,'store'])->name('admin.kontrak.store');
 Route::get('/admin/kontrak/{id}', [KontrakController::class,'show'])->name('admin.kontrak.show');
 Route::post('/admin/kontrak/{id}/update', [KontrakController::class,'update'])->name('admin.kontrak.update');
+Route::post('/admin/soal-psikotes/store', [PsikotesController::class, 'store'])
+     ->name('admin.soal_psikotes.store');
+// EDIT SOAL
+Route::get('/psikotes/soal/{id}/edit', [PsikotesController::class, 'editSoal'])
+    ->name('admin.psikotes.edit');
+
+// UPDATE SOAL
+Route::put('/psikotes/soal/{id}/update', [PsikotesController::class, 'updateSoal'])
+    ->name('admin.psikotes.update');
+
+// DELETE SOAL
+Route::delete('/psikotes/soal/{id}/delete', [PsikotesController::class, 'deleteSoal'])
+    ->name('admin.psikotes.destroy');
 
 /* ============ PELAMAR ============ */
 Route::get('/pelamar/dashboard', [PelamarDashboard::class, 'index'])->name('pelamar.dashboard');
+Route::get('/pelamar/psikotes', [PsikotesPelamarController::class, 'index'])->name('pelamar.psikotes');
+Route::get('/pelamar/psikotes/kerjakan/{tipe}', [PsikotesPelamarController::class, 'kerjakan'])->name('pelamar.psikotes.kerjakan');
+Route::post('/pelamar/psikotes/submit/{psikotes}', [PsikotesPelamarController::class, 'submit'])->name('pelamar.psikotes.submit');
+Route::get('/pelamar/psikotes-selesai/{id}', [PsikotesPelamarController::class, 'selesai'])->name('pelamar.psikotes.selesai');
 Route::get('/pelamar/profile', [ProfilController::class, 'index'])->name('pelamar.profile');
 Route::post('/pelamar/profile', [ProfilController::class, 'update'])->name('pelamar.profile.update');
 Route::get('/pelamar/lowongan', [PelamarLowongan::class, 'index']);
