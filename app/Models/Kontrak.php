@@ -11,6 +11,7 @@ class Kontrak extends Model
 
     // Tetapkan nama tabel sesuai database
     protected $table = 'kontrak';
+    public $timestamps = false;
 
     protected $fillable = [
         'lamaran_id',

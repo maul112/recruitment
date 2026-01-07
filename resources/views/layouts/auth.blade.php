@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>@yield('title', 'Rekrutmen Sekolah')</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    @vite('resources/css/app.css')
     <style>
         * {
             margin:0;
@@ -51,7 +51,7 @@
             font-size: 14px;
             line-height: 1.7;
             max-width: 350px;
-            opacity: 0.9;
+            /* opacity: 0.9; */
         }
 
         .circle {
@@ -109,21 +109,21 @@
 
         .input-group label {
             font-size: 13px;
-            color: #6b7280;
+            /* color: #6b7280; */
         }
 
         .input-group input {
             width: 100%;
             padding: 10px 12px;
             border-radius: 6px;
-            border: 1px solid #c7d2fe;
+            /* border: 1px solid #c7d2fe; */
             margin-top: 5px;
             outline: none;
         }
 
-        .input-group input:focus {
+        /* .input-group input:focus {
             border-color: #4f46e5;
-        }
+        } */
 
         .form-extra {
             display: flex;
@@ -164,8 +164,8 @@
         }
 
         .social a {
-            width: 28px;
-            height: 28px;
+            width: 2rem;
+            height: 2rem;
             background: #4f46e5;
             display: flex;
             align-items: center;
@@ -191,6 +191,32 @@
         .alert-success {
             background: #dcfce7;
             color: #166534;
+        }
+
+        /* ========== ANIMATION ========== */
+
+        .animated-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 1.5s ease-out forwards;
+        }
+
+        .animated-text.delay-1 {
+            animation-delay: 0.2s;
+        }
+        .animated-text.delay-2 {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
     </style>

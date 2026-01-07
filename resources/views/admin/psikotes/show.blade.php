@@ -10,8 +10,8 @@
         
             {{-- Info Pelamar --}}
             <div style="margin-bottom:20px;">
-                <strong>Pelamar:</strong> {{ $psikotes->lamaran->pelamar->nama }} <br>
-                <strong>Posisi Lamaran:</strong> {{ $psikotes->lamaran->posisi }} <br>
+                <strong>Pelamar:</strong> {{ $psikotes->lamaran->pelamar->nama_lengkap }} <br>
+                <strong>Posisi Lamaran:</strong> {{ $psikotes->lamaran->lowongan->posisi }} <br>
                 <strong>Status Psikotes:</strong> {{ $psikotes->status }} <br>
                 <strong>Mulai Tes:</strong> {{ $psikotes->mulai_at ?? '-' }} <br>
                 <strong>Selesai Tes:</strong> {{ $psikotes->selesai_at ?? '-' }} <br>

@@ -18,9 +18,9 @@
         <div style="display:flex; gap:12px; align-items:center;">
             <input id="searchInput" type="search" placeholder="Cari nama, NIK, atau pendidikan..." 
                    value="{{ $q ?? '' }}"
-                   style="padding:10px 14px; border-radius:10px; border:1px solid #e5e7eb; width:360px;">
+                   class="px-3.5 py-2.5 border border-gray-200 rounded-lg w-[360px] text-sm">
 
-            <select id="statusFilter" style="padding:10px 14px; border-radius:10px; border:1px solid #e5e7eb;">
+            <select id="statusFilter" class="px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm">
                 <option value="">Semua status</option>
                 <option value="pending" {{ (isset($status) && $status=='pending') ? 'selected' : '' }}>Pending</option>
                 <option value="valid" {{ (isset($status) && $status=='valid') ? 'selected' : '' }}>Valid</option>
@@ -78,19 +78,23 @@
                         @endif
                     </td>
                     <td class="actions" style="padding:12px; display:flex; gap:8px; flex-wrap:wrap;">
-                        <a class="btn" href="{{ route("admin.pelamar.show", $p->id) }}">Detail</a>
+                        <a class="btn text-sm" href="{{ route("admin.pelamar.show", $p->id) }}">Detail</a>
                         <form action="{{ url('admin/pelamars/'.$p->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Hapus pelamar ini?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Hapus</button>
+                            <button type="submit" class="btn btn-danger text-sm">Hapus</button>
                         </form>
                     </td>
                 </tr>
                 @empty
                 <tr>
                     <td colspan="6" style="text-align:center; padding:45px;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png" width="80">
-                        <p style="margin-top:15px; color:#6b7280;">Belum ada pelamar</p>
+                        <div class="flex">
+                            <div class="flex items-center gap-8 mx-auto">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png" width="80">
+                                <p style="margin-top:15px; color:#6b7280;">Belum ada pelamar</p>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforelse
@@ -113,7 +117,9 @@
 <!-- ====== Styles tambahan ====== -->
 <style>
     table tbody tr.row-anim {
-        transition: transform 220ms ease, box-shadow 220ms ease, background 160ms ease;
+        transition: transform 220ms ease;
+        box-shadow: 220ms ease;
+        background: 160ms ease;
     }
     table tbody tr.row-anim:hover {
         transform: translateY(-6px);

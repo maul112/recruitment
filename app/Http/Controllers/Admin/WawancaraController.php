@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Wawancara;
 use App\Models\Lamaran;
+use Illuminate\Validation\ValidationException;
 
 class WawancaraController extends Controller
 {
@@ -59,7 +60,17 @@ class WawancaraController extends Controller
             "adaptabilitas"
         ];
 
-        return view('admin.wawancara.show', compact('wawancara','aspek'));
+        $deskripsi = [
+            "Kejelasan, cara menjawab, bahasa tubuh",
+            "Pemahaman terkait posisi yang dilamar",
+            "Relevansi dan kedalaman pengalaman",
+            "Kemampuan memecahkan masalah",
+            "Motivasi, disiplin, kerja sama",
+            "Pembawaan diri saat wawancara",
+            "Kemampuan menyesuaikan diri",
+        ];
+
+        return view('admin.wawancara.show', compact('wawancara','aspek', 'deskripsi'));
     }
 
     // Update penilaian wawancara
@@ -77,26 +88,41 @@ class WawancaraController extends Controller
             'nilai_adaptabilitas'
         ];
 
+        
         $data_kriteria = $request->only($kriteria);
         $nilai_kriteria = collect($data_kriteria)->map(function ($nilai) {
             return (int) $nilai;
         });
         $nilai_rata_rata = collect($nilai_kriteria)->avg();
-
-        $request->merge(['nilai' => $nilai_rata_rata]);
-        $request->validate([
-            'nilai_komunikasi' => 'required|integer|min:10|max:100',
-            'nilai_pengetahuan_teknis' => 'required|integer|min:10|max:100',
-            'nilai_pengalaman_kerja' => 'required|integer|min:10|max:100',
-            'nilai_problem_solving' => 'required|integer|min:10|max:100',
-            'nilai_sikap_etika_kerja' => 'required|integer|min:10|max:100',
-            'nilai_kepercayaan_diri' => 'required|integer|min:10|max:100',
-            'nilai_adaptabilitas' => 'required|integer|min:10|max:100',
-            'nilai' => 'required|integer|min:10|max:100',
-            'komentar' => 'nullable|string'
-        ]);
+        $request->merge(['nilai' => (int) round($nilai_rata_rata)]);
+        try{
+            $request->validate([
+                'nilai_komunikasi' => 'required|integer|min:10|max:100',
+                'nilai_pengetahuan_teknis' => 'required|integer|min:10|max:100',
+                'nilai_pengalaman_kerja' => 'required|integer|min:10|max:100',
+                'nilai_problem_solving' => 'required|integer|min:10|max:100',
+                'nilai_sikap_etika_kerja' => 'required|integer|min:10|max:100',
+                'nilai_kepercayaan_diri' => 'required|integer|min:10|max:100',
+                'nilai_adaptabilitas' => 'required|integer|min:10|max:100',
+                'nilai' => 'required|integer|min:10|max:100',
+                'komentar' => 'nullable|string'
+            ]);
+        } catch (ValidationException $e) {
+            return redirect()->route('admin.wawancara.show',$wawancara->id)->with('error','Terjadi kesalahan saat update penilaian wawancara.');
+        }
 
         $wawancara->update($request->all());
+
+        // Update status lamaran
+        $lamaran = $wawancara->lamaran;
+        if ($nilai_rata_rata > 75) {
+            $lamaran->update(['status' => 'lulus']);
+        } else {
+            $lamaran->update(['status' => 'ditolak_akhir']);
+        }
+
+        // Update nilai wawancara
+        $lamaran->update(['nilai_wawancara' => $nilai_rata_rata]);
 
         return redirect()->route('admin.wawancara.show',$wawancara->id)->with('success','Penilaian wawancara berhasil disimpan.');
     }

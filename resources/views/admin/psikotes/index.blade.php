@@ -15,7 +15,7 @@
             </p>
         </div>
 
-        <a href="{{ route('admin.psikotes.create') }}" class="btn">
+        <a href="{{ route('admin.psikotes.create') }}" class="btn text-sm">
             + Buat Psikotes Baru
         </a>
     </div>
@@ -51,7 +51,7 @@
                 @forelse($psikotes as $p)
                 <tr class="row-anim">
                     <td style="padding:12px;"><strong>{{ $p->id }}</strong></td>
-                    <td style="padding:12px;">{{ $p->lamaran->pelamar->nama }}</td>
+                    <td style="padding:12px;">{{ $p->lamaran->pelamar->nama_lengkap }}</td>
 
                     <td style="padding:12px;">
                         @if($p->status == 'belum')
@@ -76,7 +76,7 @@
                     </td>
 
                     <td style="padding:12px; display:flex; gap:8px; flex-wrap:wrap;">
-                        <a class="btn" href="{{ route('admin.psikotes.show',$p->id) }}">
+                        <a class="btn text-sm" href="{{ route('admin.psikotes.show',$p->id) }}">
                             Lihat
                         </a>
 
@@ -85,7 +85,7 @@
                                   method="POST"
                                   onsubmit="return confirm('Nilai otomatis psikotes ini?')">
                                 @csrf
-                                <button type="submit" class="btn">
+                                <button type="submit" class="btn text-sm">
                                     Nilai Otomatis
                                 </button>
                             </form>
@@ -95,8 +95,12 @@
                 @empty
                 <tr>
                     <td colspan="6" style="text-align:center; padding:45px;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png" width="80">
-                        <p style="margin-top:15px; color:#6b7280;">Belum ada data psikotes</p>
+                        <div class="flex">
+                            <div class="flex items-center gap-8 mx-auto">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png" width="80">
+                                <p style="margin-top:15px; color:#6b7280;">Belum ada data psikotes</p>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforelse
@@ -133,7 +137,7 @@
                     <td style="padding:12px; max-width:450px;">{{ Str::limit($s->pertanyaan, 110) }}</td>
 
                     <td style="padding:12px; display:flex; gap:8px;">
-                        <a href="{{ route('admin.psikotes.edit', $s->id) }}" class="btn">
+                        <a href="{{ route('admin.psikotes.edit', $s->id) }}" class="btn text-sm">
                             Edit
                         </a>
 
@@ -142,7 +146,7 @@
                               onsubmit="return confirm('Hapus soal ini?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn" style="background:#dc2626;">
+                            <button type="submit" class="btn text-sm" style="background:#dc2626;">
                                 Hapus
                             </button>
                         </form>

@@ -18,16 +18,16 @@
         <div style="display:flex; gap:12px; align-items:center;">
             <input id="searchInput" type="search" placeholder="Cari posisi, kualifikasi atau deskripsi..." 
                    value="{{ $q ?? '' }}"
-                   style="padding:10px 14px; border-radius:10px; border:1px solid #e5e7eb; width:360px;">
+                   class="px-3.5 py-2.5 border border-gray-200 rounded-lg w-[360px] text-sm">
             
-            <select id="statusFilter" style="padding:10px 14px; border-radius:10px; border:1px solid #e5e7eb;">
+            <select id="statusFilter" class="px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm">
                 <option value="">Semua status</option>
                 <option value="draft" {{ (isset($status) && $status=='draft') ? 'selected' : '' }}>Draft</option>
                 <option value="published" {{ (isset($status) && $status=='published') ? 'selected' : '' }}>Dibuka</option>
                 <option value="closed" {{ (isset($status) && $status=='closed') ? 'selected' : '' }}>Ditutup</option>
             </select>
 
-            <a href="{{ url('/admin/lowongan/create') }}" class="btn">
+            <a href="{{ url('/admin/lowongan/create') }}" class="btn text-sm">
                 + Tambah Lowongan
             </a>
         </div>
@@ -115,11 +115,11 @@
                     </td>
 
                     <td class="actions" style="padding:12px; display:flex; gap:8px; flex-wrap:wrap;">
-                        <a class="btn" href="{{ url('/admin/lowongan/edit/'.$l->id) }}">Edit</a>
+                        <a class="btn text-sm bg-[#2563eb]" href="{{ url('/admin/lowongan/edit/'.$l->id) }}">Edit</a>
 
                         <form method="POST" action="{{ url('/admin/lowongan/delete/'.$l->id) }}" onsubmit="return confirm('Hapus lowongan ini?')">
                             @csrf
-                            <button type="submit" class="btn">Hapus</button>
+                            <button type="submit" class="btn btn-danger text-sm">Hapus</button>
                         </form>
                     </td>
                 </tr>
@@ -127,8 +127,12 @@
                 @empty
                 <tr>
                     <td colspan="9" style="text-align:center; padding:45px;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png" width="80">
-                        <p style="margin-top:15px; color:#6b7280;">Belum ada lowongan yang ditambahkan</p>
+                        <div class="flex">
+                            <div class="flex items-center gap-8 mx-auto">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png" width="80">
+                                <p style="margin-top:15px; color:#6b7280;">Belum ada lowongan yang ditambahkan</p>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforelse

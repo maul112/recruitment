@@ -16,6 +16,7 @@
             <option value="psikotes" {{ $lamaran->status=='psikotes' ? 'selected':'' }}>Psikotes</option>
             <option value="wawancara" {{ $lamaran->status=='wawancara' ? 'selected':'' }}>Wawancara</option>
             <option value="lulus" {{ $lamaran->status=='lulus' ? 'selected':'' }}>Diterima</option>
+            <option value="ditolak_adm" {{ $lamaran->status=='ditolak_akhir' ? 'selected':'' }}>Ditolak Akhir</option>
         </select>
 
         <label class="block my-2">Catatan Admin:</label>
@@ -30,7 +31,7 @@
         <label class="block my-2">Nilai Wawancara:</label>
         <input class="border rounded-md p-2" type="number" name="nilai_wawancara" value="{{ $lamaran->nilai_wawancara }}">
 
-        <button class="block mt-4 py-2 px-4 bg-blue-500 rounded-xl text-white hover:scale-105 transition-all duration-200 hover:shadow-2xl" type="submit">Simpan</button>
+        <button class="btn block mt-4 py-2 px-4 rounded-xl text-white hover:scale-105 transition-all duration-200 hover:shadow-2xl" type="submit">Simpan</button>
     </form>
 
 </div>

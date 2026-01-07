@@ -10,6 +10,13 @@ class LoginController extends Controller
 {
     public function index()
     {
+        if (Auth::check()) {
+            if (auth()->user()->role == 'admin') {
+                return redirect('/admin/dashboard');
+            } else {
+                return redirect('/pelamar/dashboard');
+            }
+        }
         return view('auth.login');
     }
 

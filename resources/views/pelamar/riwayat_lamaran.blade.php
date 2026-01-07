@@ -47,8 +47,7 @@
                     <div class="info-item">
                         <i class="fas fa-calendar-alt"></i>
                         <span>
-                            {{-- {{ $lamaran->wawancara ? $lamaran->wawancara->jadwal->format('d M Y') : '-' }} --}}
-                            {{ $lamaran->wawancara?->jadwal?->format('d M Y') ?? '-' }}
+                            {{ $lamaran->wawancara?->jadwal?->format('d M Y') ?? '-' }}, {{ $lamaran->wawancara?->lokasi?? '-' }}
                         </span>
                     </div>
                 </div>

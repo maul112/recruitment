@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lamaran;
 use Illuminate\Http\Request;
 use App\Models\Pelamar;
 
@@ -46,6 +47,16 @@ class PelamarsController extends Controller
         $pelamar = Pelamar::findOrFail($id);
         $pelamar->status_verifikasi = $request->status;
         $pelamar->save();
+        $lamaran = Lamaran::where('pelamar_id', $id)->first();
+
+        // Update status lamaran
+        if ($request->status == 'valid') {
+            $lamaran->update(['status' => 'verifikasi']);
+        } else if ($request->status == 'tidak_valid') {
+            $lamaran->update(['status' => 'ditolak_adm']);
+        } else {
+            $lamaran->update(['status' => 'terkirim']);
+        }
 
         return redirect()->route('admin.pelamar.index')->with('success', 'Status verifikasi berhasil diperbarui');
     }

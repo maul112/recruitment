@@ -21,7 +21,7 @@
     </select>
 
     <label>Durasi (menit)</label>
-    <input type="number" name="durasi" class="form-control" required>
+    <input type="number" name="durasi" class="form-control" value="{{ old('pertanyaan', $soal->durasi) }}" required>
 
     <!-- PERTANYAAN -->
     <label>Pertanyaan</label>

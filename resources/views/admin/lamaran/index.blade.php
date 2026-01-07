@@ -4,10 +4,24 @@
 
 @section('content')
 <div class="w-full">
-    <h3 class="mb-2 text-2xl">Daftar Lamaran Pelamar</h3>
+    <div style="margin-bottom:18px;">
+        <h3 style="font-size:20px; margin-bottom:5px;">Daftar Lamaran Pelamar</h3>
+        <p style="color:#6b7280; font-size:14px;">
+            Kelola semua data lamaran pelamar yang tersedia
+        </p>
+    </div>
 
+    <!-- ALERT -->
     @if(session('success'))
-        <div style="color:green">{{ session('success') }}</div>
+        <div style="
+            background:#ecfdf5;
+            border:1px solid #34d399;
+            color:#065f46;
+            padding:14px 18px;
+            border-radius:12px;
+            margin-bottom:18px;">
+            ✅ {{ session('success') }}
+        </div>
     @endif
 
     <!-- TABLE -->
@@ -40,15 +54,19 @@
                     <td style="padding:12px;">{{ $l->total_nilai }}</td>
 
                     <td class="actions" style="padding:12px; display:flex; gap:8px; flex-wrap:wrap;">
-                        <a class="btn" href="{{ route('admin.lamaran.edit', $l->id) }}">Edit</a>
+                        <a class="btn text-sm" href="{{ route('admin.lamaran.edit', $l->id) }}">Edit</a>
                     </td>
                 </tr>
 
                 @empty
                 <tr>
                     <td colspan="9" style="text-align:center; padding:45px;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png" width="80">
-                        <p style="margin-top:15px; color:#6b7280;">Belum ada lowongan yang ditambahkan</p>
+                        <div class="flex">
+                            <div class="flex items-center gap-8 mx-auto">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png" width="80">
+                                <p style="margin-top:15px; color:#6b7280;">Belum ada lowongan yang ditambahkan</p>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforelse

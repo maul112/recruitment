@@ -12,8 +12,8 @@
 
         <h3>JOIN US</h3>
 
-        <h1>Create <br><span>Account</span></h1>
-        <p>
+        <h1 class="animated-text delay-1">Create <br><span>Account</span></h1>
+        <p class="animated-text delay-2">
             Daftarkan dirimu untuk mengikuti proses rekrutmen sekolah.
         </p>
     </div>
@@ -25,28 +25,28 @@
             <form action="/register" method="POST">
                 @csrf
 
-                <div class="input-group">
-                    <label>Nama Lengkap</label>
-                    <input type="text" name="name" required>
+                <div class="group input-group">
+                    <label for="name" class="text-[#6b7280] transition-colors duration-200 group-focus-within:text-[#4f46e5]">Nama Lengkap</label>
+                    <input class="border border-gray-300 focus:border-[#4f46e5] focus:ring-1 focus:ring-[#4f46e5] transition-all" type="text" id="name" name="name" required>
                 </div>
 
-                <div class="input-group">
-                    <label>Email</label>
-                    <input type="email" name="email" required>
+                <div class="group input-group">
+                    <label for="email" class="text-[#6b7280] transition-colors duration-200 group-focus-within:text-[#4f46e5]">Email</label>
+                    <input class="border border-gray-300 focus:border-[#4f46e5] focus:ring-1 focus:ring-[#4f46e5] transition-all" id="email" type="email" name="email" required>
                 </div>
 
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" name="password" required>
+                <div class="group input-group">
+                    <label for="password" class="text-[#6b7280] transition-colors duration-200 group-focus-within:text-[#4f46e5]">Password</label>
+                    <input class="border border-gray-300 focus:border-[#4f46e5] focus:ring-1 focus:ring-[#4f46e5] transition-all" id="password" type="password" name="password" required>
                 </div>
 
-                <div class="input-group">
-                    <label>Konfirmasi Password</label>
-                    <input type="password" name="password_confirmation" required>
+                <div class="group input-group">
+                    <label for="password" class="text-[#6b7280] transition-colors duration-200 group-focus-within:text-[#4f46e5]">Konfirmasi Password</label>
+                    <input class="border border-gray-300 focus:border-[#4f46e5] focus:ring-1 focus:ring-[#4f46e5] transition-all" id="password" type="password" name="password_confirmation" required>
                 </div>
 
-                <button class="btn-primary">Register</button>
-                <a href="/login" class="btn-outline" style="display:block; text-align:center">
+                <button class="btn-primary hover:scale-105 animation duration-100">Register</button>
+                <a href="/login" class="btn-outline hover:scale-105 animation duration-100" style="display:block; text-align:center">
                     Back to Login
                 </a>
 

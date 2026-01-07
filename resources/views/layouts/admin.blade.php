@@ -57,6 +57,11 @@
             background: #1e293b;
             transform: translateX(5px);
         }
+        
+        .sidebar a.active {
+            background: #1e293b;
+            transform: translateX(5px);
+        }
 
         .logout {
             margin-top: 50px;
@@ -85,6 +90,7 @@
             align-items: center;
             transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
+            aspect-ratio: 1/1;
         }
 
         .cards .card h3 {
@@ -150,7 +156,7 @@
             width: 100%;
             border-collapse: collapse;
             background: white;
-            border-radius: 18px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
         }
@@ -238,7 +244,7 @@
             border: none;
             cursor: pointer;
             text-decoration: none;
-            font-size: 14px;
+            /* font-size: 14px; */
             /* width: 40%; */
             transition: 0.3s;
         }
@@ -249,11 +255,11 @@
         }
 
         .btn-danger {
-            background: #2563eb;
+            background: #eb2525;
         }
 
         .btn-danger:hover {
-            background: #1d4ed8;
+            background: #eb2525;
         }
 
         /* ✅ ANIMASI FORM */
@@ -277,17 +283,17 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <h2>ADMIN PANEL</h2>
-        <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
-        <a href="{{ url('/admin/lowongan') }}">Lowongan</a>
-        <a href="{{ url('/admin/pelamar') }}">Pelamar</a>
-        <a href="{{ url('/admin/lamaran') }}">Lamaran</a>
-        <a href="{{ url('/admin/psikotes') }}">Psikotes</a>
-        <a href="{{ url('/admin/wawancara') }}">Wawancara</a>
-        <a href="{{ url('/admin/kontrak') }}">Kontrak</a>
+        <a class="{{ request()->is('*dashboard*') ? 'active' : '' }}" href="{{ url('/admin/dashboard') }}">Dashboard</a>
+        <a class="{{ request()->is('*lowongan*') ? 'active' : '' }}" href="{{ url('/admin/lowongan') }}">Lowongan</a>
+        <a class="{{ request()->is('*pelamar*') ? 'active' : '' }}" href="{{ url('/admin/pelamar') }}">Pelamar</a>
+        <a class="{{ request()->is('*lamaran*') ? 'active' : '' }}" href="{{ url('/admin/lamaran') }}">Lamaran</a>
+        <a class="{{ request()->is('*psikotes*') ? 'active' : '' }}" href="{{ url('/admin/psikotes') }}">Psikotes</a>
+        <a class="{{ request()->is('*wawancara*') ? 'active' : '' }}" href="{{ url('/admin/wawancara') }}">Wawancara</a>
+        <a class="{{ request()->is('*kontrak*') ? 'active' : '' }}" href="{{ url('/admin/kontrak') }}">Kontrak</a>
 
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <button type="submit" class="btn btn-danger" style="width:100%; margin-top:50px;">Logout</button>
+            <button type="submit" class="btn btn-danger hover:scale-105 animation duration-100" style="width:100%; margin-top:50px;">Logout</button>
         </form>
     </div>
 

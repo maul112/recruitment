@@ -20,18 +20,22 @@ class KontrakController extends Controller
     // Form tambah kontrak
     public function create()
     {
-        $lamaran = Lamaran::where('status', 'lolos_seleksi')->get();
+        $lamaran = Lamaran::where('status', 'lulus')->get();
         return view('admin.kontrak.create', compact('lamaran'));
     }
 
     // Simpan kontrak
     public function store(Request $request)
     {
-        $request->validate([
-            'lamaran_id' => 'required|exists:lamarans,id',
-            'file_kontrak' => 'required|file|mimes:pdf,doc,docx',
-            'signature' => 'nullable|image|mimes:png,jpg,jpeg'
-        ]);
+        try {
+            $request->validate([
+                'lamaran_id' => 'required|exists:lamarans,id',
+                'file_kontrak' => 'required|file|mimes:pdf,doc,docx',
+                'signature' => 'nullable|image|mimes:png,jpg,jpeg'
+            ]);
+        } catch (\Exception $e) {
+            dd($e);
+        }
 
         $filePath = $request->file('file_kontrak')->store('kontrak','public');
         $signaturePath = $request->hasFile('signature') ? $request->file('signature')->store('signature','public') : null;
