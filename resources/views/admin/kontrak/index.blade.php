@@ -6,7 +6,7 @@
 <div class="w-full">
     <div class="flex justify-between items-center mb-4">
         <div>
-            <h3 style="font-size:20px; margin-bottom:5px;"">Daftar Kontrak</h3>
+            <h3 style="font-size:20px; margin-bottom:5px;" class="font-bold">Daftar Kontrak</h3>
             <p style="color:#6b7280; font-size:14px;">
                 Kelola semua data kontrak yang tersedia
             </p>

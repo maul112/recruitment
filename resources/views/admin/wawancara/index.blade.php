@@ -6,7 +6,7 @@
 <div class="w-full">
     <div class="flex items-center justify-between mb-4">
         <div>
-            <h3 style="font-size:20px; margin-bottom:5px;">Daftar Wawancara</h3>
+            <h3 style="font-size:20px; margin-bottom:5px;" class="font-bold">Daftar Wawancara</h3>
             <p style="color:#6b7280; font-size:14px;">
                 Kelola semua data wawancara yang tersedia
             </p>

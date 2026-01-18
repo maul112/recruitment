@@ -9,7 +9,7 @@
     <!-- HEADER -->
     <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:18px; gap:12px;">
         <div>
-            <h3 style="font-size:20px; margin-bottom:5px;">Daftar Pelamar</h3>
+            <h3 style="font-size:20px; margin-bottom:5px;" class="font-bold">Daftar Pelamar</h3>
             <p style="color:#6b7280; font-size:14px;">
                 Kelola semua data pelamar yang mendaftar
             </p>

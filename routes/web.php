@@ -52,6 +52,7 @@ Route::delete('/admin/pelamar/{id}', [PelamarsController::class, 'destroy']);
 Route::get('/admin/lamaran', [LamaranController::class, 'index'])->name('admin.lamaran.index');
 Route::get('/admin/lamaran/edit/{id}', [LamaranController::class, 'edit'])->name('admin.lamaran.edit');
 Route::post('/admin/lamaran/update/{id}', [LamaranController::class, 'update'])->name('admin.lamaran.update');
+Route::get('/admin/lamaran/report/', [LamaranController::class, 'report'])->name('admin.lamaran.report');
 Route::get('/admin/psikotes', [PsikotesController::class,'index'])->name('admin.psikotes.index');
 Route::get('/admin/psikotes/create', [PsikotesController::class,'create'])->name('admin.psikotes.create');
 Route::post('/admin/psikotes/store', [PsikotesController::class,'store'])->name('admin.psikotes.store');
