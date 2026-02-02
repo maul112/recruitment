@@ -96,3 +96,4 @@ Route::post('/pelamar/lowongan/{id}/apply', [PelamarLowongan::class, 'apply'])->
 Route::get('/pelamar/riwayat', [PelamarLowongan::class, 'riwayat'])->name('pelamar.riwayat');
 Route::get('/pelamar/lamaran/{id}', [PelamarLowongan::class, 'detail'])->name('pelamar.lamaran.detail');
 Route::get('pelamar/pengumuman', [PelamarLowongan::class, 'pengumuman'])->name('pelamar.pengumuman');
+Route::get('pelamar/wawancara', [PelamarLowongan::class, 'wawancara'])->name('pelamar.wawancara');

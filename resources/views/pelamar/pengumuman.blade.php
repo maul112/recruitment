@@ -18,11 +18,11 @@
         <form method="GET" action="{{ route('pelamar.riwayat') }}">
             <select name="status" onchange="this.form.submit()">
                 <option value="">Semua Status</option>
-                <option value="terkirim" {{ request('status')=='terkirim'?'selected':'' }}>Terkirim</option>
-                <option value="verifikasi" {{ request('status')=='verifikasi'?'selected':'' }}>Verifikasi</option>
+                {{-- <option value="terkirim" {{ request('status')=='terkirim'?'selected':'' }}>Terkirim</option> --}}
+                {{-- <option value="verifikasi" {{ request('status')=='verifikasi'?'selected':'' }}>Verifikasi</option> --}}
                 <option value="ditolak_adm" {{ request('status')=='ditolak_adm'?'selected':'' }}>Ditolak Admin</option>
-                <option value="psikotes" {{ request('status')=='psikotes'?'selected':'' }}>Psikotes</option>
-                <option value="wawancara" {{ request('status')=='wawancara'?'selected':'' }}>Wawancara</option>
+                {{-- <option value="psikotes" {{ request('status')=='psikotes'?'selected':'' }}>Psikotes</option> --}}
+                {{-- <option value="wawancara" {{ request('status')=='wawancara'?'selected':'' }}>Wawancara</option> --}}
                 <option value="lulus" {{ request('status')=='lulus'?'selected':'' }}>Lulus</option>
                 <option value="ditolak_akhir" {{ request('status')=='ditolak_akhir'?'selected':'' }}>Ditolak Akhir</option>
             </select>

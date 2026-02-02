@@ -14,7 +14,7 @@ class LowonganController extends Controller
     // Menampilkan daftar lowongan aktif
     public function index()
     {
-        $lowongans = Lowongan::where('tanggal_tutup', '>=', now())
+        $lowongans = Lowongan::where('tanggal_tutup', '<=', now())
                               ->orderBy('tanggal_buka', 'desc')
                               ->get();
 
@@ -115,5 +115,21 @@ class LowonganController extends Controller
         ->get();
 
         return view('pelamar.pengumuman', compact('lamarans'));
+    }
+
+    public function wawancara() {
+        $pelamar = auth()->user()->pelamar;
+        if (!$pelamar) {
+            return redirect()->route('pelamar.profile')
+                ->with('error','Lengkapi profil terlebih dahulu untuk melihat riwayat lamaran.');
+        }
+
+        $lamarans = $pelamar->lamarans()
+        ->where('status', 'wawancara')
+        ->with('lowongan', 'wawancara')
+        ->orderBy('created_at','desc')
+        ->get();
+
+        return view('pelamar.wawancara', compact('lamarans'));
     }
 }
